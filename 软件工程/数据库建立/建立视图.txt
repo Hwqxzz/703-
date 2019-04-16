@@ -1,0 +1,19 @@
+视图V_User的创建
+create view V_User
+as
+select  Users.UserName,Users.UserPwd,Type.TypeName
+from Users,Type
+where Users.TypeId=Type.TypeId
+视图V_Info的创建
+create view V_Info
+as
+select Info.InfoTitle,Info.InfoContent,
+Info.InfoLinkman,Info.InfoTel,Kind.KindName
+from Info ,Kind
+where Info.KindId=Kind.KindId
+视图V_Check的创建
+create view V_check
+as
+select  Kind.KindName, Info.InfoTitle,Checks.CheckName 
+from Info ,Checks,Kind
+where Info.KindId=Kind.KindId and Info.CheckId=Checks.CheckId
