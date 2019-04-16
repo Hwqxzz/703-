@@ -1,0 +1,16 @@
+CREATE DATABASE SIS
+     ON  (
+  NAME=' SIS', 
+  FILENAME='E:\project\SIS.mdf',  
+      SIZE=5MB,                 
+      MAXSIZE=100MB,       
+      FILEGROWTH=15%    
+)
+LOG ON
+(
+      NAME='SIS',
+      FILENAME='E:\project\SIS.ldf',
+      SIZE=2MB,
+      FILEGROWTH=1MB
+)
+GO
