@@ -1,0 +1,52 @@
+用户表（Users）的创建
+CREATE TABLE Users
+     ( UserId   int  NOT NULL  primary key  IDENTITY(1,1),
+      UserName varchar(50) not null,
+      UserPwd varchar(50) not null,
+      UserSex varchar(10) not null check(UserSex='男' or UserSex='女'),
+      UserEmail varchar(50) not null,
+      UserQQ varchar(50) not null,
+      UserPhone varchar(50) not null，
+TypeId   int  NOT NULL，
+FOREIGN KEY (TypeId) REFERENCES Type(TypeId)
+        )
+GO
+
+用户类型表（Type）的创建
+CREATE TABLE Type
+        (TypeId   int  NOT NULL  primary key  IDENTITY(1,1),
+         TypeName varchar(50) not null 
+)
+GO
+
+
+供求信息表（Info）的创建
+CREATE TABLE Info
+        (InfoId   int  NOT NULL  primary key  IDENTITY(1,1),
+         InfoTitle varchar(50) not null unique,
+         InfoContent varchar(500) not null,
+         InfoLinkman varchar(50) not null,
+         InfoTel varchar(50) not null,
+         InfoDate datetime not null DEFAULT (getdate())，
+KindId   int  NOT NULL，
+CheckId   int  NOT NULL，
+FOREIGN KEY (KindId) REFERENCES Kind (KindId)，
+FOREIGN KEY (CheckId) REFERENCES Checks(CheckId)
+        )
+GO
+
+信息类型表（Kind）的创建
+CREATE TABLE Kind
+        (KindId   int  NOT NULL  primary key  IDENTITY(1,1),
+         KindName varchar(50) not null 
+         )
+GO
+
+
+
+信息审核表（Check）的创建
+CREATE TABLE Checks
+      (CheckId   int  NOT NULL  primary key  IDENTITY(1,1),
+         CheckName varchar(50) not null 
+        )
+GO
